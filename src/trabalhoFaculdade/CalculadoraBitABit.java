@@ -2,15 +2,21 @@ package trabalhoFaculdade;
 
 public final class CalculadoraBitABit {
 	
+	/* 
+	 Soma usando deslocamentos: x + y = 2 * (x&y) + (x^y)
+	 */
 	public static final int soma(Integer x, Integer y) {
 		while (y != 0) {
-			int aux = x & y; //AND
-			x ^= y; // XOR
+			int aux = x & y; 
+			x ^= y; 
 			y = aux << 1;
 		}
 		return x;
 	}
 	
+	/* 
+	 Subtração usando deslocamentos: x - y = 2 * (!x & y) + (x^y)
+	 */
 	public static final int subtracao(Integer x, Integer y) {
 		
 		while (y != 0) {
