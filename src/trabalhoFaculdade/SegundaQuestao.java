@@ -13,5 +13,4 @@ public class SegundaQuestao {
 			System.out.println("O numero " + numero + " não está entre o intervalo de 1 a 100.");
 		}
 	}
-
 }

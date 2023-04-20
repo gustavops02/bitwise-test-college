@@ -4,10 +4,15 @@ public final class CalculadoraBitABit {
 	
 	/* 
 	 Soma usando deslocamentos: x + y = 2 * (x&y) + (x^y)
+A cada iteração do loop, a variável "aux" é calculada como o 
+resultado da operação AND entre os bits correspondentes de x e y.
+ Essa operação tem como objetivo identificar os bits que precisam ser somados com o próximo dígito.
+ 
+  XOR realiza a soma dos bits correspondentes, ignorando a presença de um eventual 'vai-um'. 
 	 */
 	public static final int soma(Integer x, Integer y) {
 		while (y != 0) {
-			int aux = x & y; 
+			int aux = x & y;
 			x ^= y; 
 			y = aux << 1;
 		}
@@ -16,34 +21,28 @@ public final class CalculadoraBitABit {
 	
 	/* 
 	 Subtração usando deslocamentos: x - y = 2 * (!x & y) + (x^y)
+ A operação XOR é particularmente útil porque permite calcular a diferença
+  entre os bits sem levar em conta a presença de um possível bit de empréstimo.
 	 */
 	public static final int subtracao(Integer x, Integer y) {
 		
 		while (y != 0) {
-			int aux = (~x) & y;
-			x ^= y;
-			y = aux << 1;
+			int aux = (~x) & y; // pega o número emprestado.
+			x ^= y; 
+			y = aux << 1; // passa o bit emprestado para o proximo bit
 		}
 		return x;
 		
 	}
 
-	/*
-	 Em resumo, a função multiplica dois inteiros iterando sobre os bits do segundo inteiro "n2",
-	  verificando se um bit está definido ou não e, em seguida, adicionando o primeiro inteiro "n1"
-	   conforme necessário. As operações de deslocamento para a esquerda e para a direita são usadas
-	    para mover para a próxima posição de bit e restaurar o valor original de "n1" após cada iteração.
-	 */
 	public static final int bitwiseMultiply(int n1, int n2) {
-	    int result=0;
-	    while (n2 != 0)
-	    {
-	        if ((n2 & 01) != 0) 
-	        {
-	            result = result + n1; 
+	    int result = 0;
+	    while (n2 != 0) {
+	        if ((n2 & 1) != 0) { // se é impar ou não. 
+	            result += n1;
 	        }
-	        n1 <<= 1;              
-	        n1 >>= 1;             
+	        n1 <<= 1; // proximo bit da multiplicacao
+	        n2 >>= 1; // processar o proximo bit
 	    }
 	    return result;
 	}
