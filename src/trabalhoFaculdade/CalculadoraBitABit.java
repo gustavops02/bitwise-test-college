@@ -3,12 +3,12 @@ package trabalhoFaculdade;
 public final class CalculadoraBitABit {
 	
 	/* 
-	 Soma usando deslocamentos: x + y = 2 * (x&y) + (x^y)
-A cada iteração do loop, a variável "aux" é calculada como o 
-resultado da operação AND entre os bits correspondentes de x e y.
+ Soma usando deslocamentos: x + y = 2 * (x&y) + (x^y)
+ A cada iteração do loop, a variável "aux" é calculada como o 
+ resultado da operação AND entre os bits correspondentes de x e y.
  Essa operação tem como objetivo identificar os bits que precisam ser somados com o próximo dígito.
  
-  XOR realiza a soma dos bits correspondentes, ignorando a presença de um eventual 'vai-um'. 
+ XOR realiza a soma dos bits correspondentes, ignorando a presença de um eventual 'vai-um'. 
 	 */
 	public static final int soma(Integer x, Integer y) {
 		while (y != 0) {
@@ -21,8 +21,8 @@ resultado da operação AND entre os bits correspondentes de x e y.
 	
 	/* 
 	 Subtração usando deslocamentos: x - y = 2 * (!x & y) + (x^y)
- A operação XOR é particularmente útil porque permite calcular a diferença
-  entre os bits sem levar em conta a presença de um possível bit de empréstimo.
+	 A operação XOR é particularmente útil porque permite calcular a diferença
+	 entre os bits sem levar em conta a presença de um possível bit de empréstimo.
 	 */
 	public static final int subtracao(Integer x, Integer y) {
 		
